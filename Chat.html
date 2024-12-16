@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Invertido</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: transparent;
+        }
+        .widget-container {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        iframe {
+            border: none;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="widget-container">
+        <iframe id="chatFrame" src="https://botrix.live/widgets/chat/?bid=uwsxHb9ZbfM4FzePKECpnQ&bots=false&emojis=true&hideCommands=false&hideMessages=false&hideMessagesSeconds=10&fontSize=23&kick=true&platformIcon=false&theme=bubbles"></iframe>
+    </div>
+    <script>
+        const iframe = document.getElementById('chatFrame');
+        iframe.onload = () => {
+            const observer = new MutationObserver(() => {
+                iframe.contentWindow.scrollTo(0, iframe.contentDocument.body.scrollHeight);
+            });
+
+            observer.observe(iframe.contentDocument.body, { childList: true, subtree: true });
+        };
+    </script>
+</body>
+</html>
